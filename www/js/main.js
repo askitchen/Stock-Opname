@@ -218,6 +218,8 @@ $$(document).on('backbutton', function (e) {
   // });
   // dialog.$el.find('input').focus();
   
+  app.dialog.alert(app.views.main.router.url)
+
   // for example, based on what and where view you have
   var leftp  = app.panel.left && app.panel.left.opened;
   var rightp = app.panel.right && app.panel.right.opened;
@@ -243,9 +245,8 @@ $$(document).on('backbutton', function (e) {
         });
       } else
         navigator.app.exitApp();
-    } else
+    }
 
-    app.dialog.alert(app.views.main.router.url)
 });
 
 
