@@ -218,8 +218,6 @@ $$(document).on('backbutton', function (e) {
   // });
   // dialog.$el.find('input').focus();
   
-  app.dialog.alert(app.views.main.router.url)
-
   // for example, based on what and where view you have
   var leftp  = app.panel.left && app.panel.left.opened;
   var rightp = app.panel.right && app.panel.right.opened;
@@ -229,12 +227,11 @@ $$(document).on('backbutton', function (e) {
       app.panel.close();
       return false;
   } else
-  if ($$('.modal-in').length > 0) {
-      app.dialog.alert("Close dialog and popup!")
-      app.dialog.close();
-      app.popup.close();
-      return false;
-  } else
+  // if ($$('.modal-in').length > 0) {
+  //     app.dialog.close();
+  //     app.popup.close();
+  //     return false;
+  // } else
 
   if (app.views.main.router.url == '/' || app.views.main.router.url == '/tab2/' ||
     app.views.main.router.url == '/android_asset/www/index.html') {
