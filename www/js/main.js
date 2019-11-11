@@ -228,7 +228,7 @@ $$(document).on('backbutton', function (e) {
       return false;
   } else
   if ($$('.modal-in').length > 0) {
-
+      app.dialog.alert("Close dialog and popup!")
       app.dialog.close();
       app.popup.close();
       return false;
