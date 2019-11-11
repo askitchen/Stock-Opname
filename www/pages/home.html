@@ -220,8 +220,6 @@
           
                   var kode = $$('.search').val();
 
-                  // app.dialog.alert(kode)
-
                   if (!kode) return false;
 
                   var formData = {};
@@ -241,6 +239,7 @@
                 });
           
                 
+                // note: gunakan fungsi prop untuk versi terbaru
                 $$('.search').prop('readonly', true);
                 $$('.qty').focus();
               }
