@@ -243,7 +243,9 @@ $$(document).on('backbutton', function (e) {
         });
       } else
         navigator.app.exitApp();
-    }
+    } else
+
+    app.dialog.alert(app.views.main.router.url)
 });
 
 
