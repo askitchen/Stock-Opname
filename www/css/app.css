@@ -48,6 +48,18 @@ img.responsive.profile, img.responsive.profile2 {
     margin-right: auto;
     vertical-align: middle;
   }
+  
+}
+
+.list li {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  .list li {
+    font-size: 16px;
+  }
+  
 }
 
 /* Left Panel right border when it is visible by breakpoint */

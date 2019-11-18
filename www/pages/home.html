@@ -59,7 +59,7 @@
           
       <!-- data grid -->
       <div class="row no-gap item">
-        <div class="list virtual-list virtual-stock">
+        <div class="list virtual-list virtual-stock" style="width: 100%;">
         </div>
       </div>
     </div>
@@ -340,6 +340,8 @@
                 reloadCurrent: true,
                 ignoreCache: true,
               });
+              
+              $$('.search').focus();
             
             });
           });
