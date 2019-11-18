@@ -370,7 +370,13 @@
           });
         });
 
-  
+        $$('.search').on('focus', function (e) {
+          app.router.navigate('/search/', {
+                reloadCurrent: true,
+                ignoreCache: true,
+              });
+        });
+
         // $$('.page-content').on('scroll', function (e) {
           
         //   var card = $$('.card.item-detail');
