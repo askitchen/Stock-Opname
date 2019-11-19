@@ -19,6 +19,7 @@ var app = new Framework7({
       password: null,
       whouse: null,
       lokasi: null,
+      kode: null,
 
       sysqty: 0,
       

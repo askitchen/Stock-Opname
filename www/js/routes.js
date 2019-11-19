@@ -7,25 +7,7 @@ routes = [
 
       // App instance
       var app = router.app;
-
-        
-      // Resolve route to load page
-      resolve(
-        {
-          componentUrl: './pages/home.html',
-        },
-      );
-    },
-  },
-  {
-    path: '/find/:kode',
-    async: function (routeTo, routeFrom, resolve, reject) {
-      // Router instance
-      var router = this;
-
-      // App instance
-      var app = router.app;
-      var kode = routeTo.params.kode;
+      var kode = app.data.kode;
 
         
       // Resolve route to load page
@@ -41,6 +23,29 @@ routes = [
       );
     },
   },
+  /*{
+    path: '/find/:kode',
+    async: function (routeTo, routeFrom, resolve, reject) {
+      // Router instance
+      var router = this;
+
+      // App instance
+      var app = router.app;
+      var kode = routeTo.params.kode;
+        
+      // Resolve route to load page
+      resolve(
+        {
+          componentUrl: './pages/home.html',
+        },
+        {
+          context: {
+            kode: kode,
+          }
+        }
+      );
+    },
+  },*/
   {
     path: '/search/',
     componentUrl: './pages/search.html',

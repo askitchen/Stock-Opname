@@ -25,7 +25,7 @@
       <!-- search bar -->
       <div class="row no-gap header">
         <div class="col-100 tablet-100">
-          <input type="text" class="search">&nbsp;&nbsp;
+          <input type="text" class="search" value="{{kode}}">&nbsp;&nbsp;
           <button class="button col button-round btn-search"><i class="material-icons menu md-only" style="margin-top: 10px; color: #fff;">search</i></button>&nbsp;
           <button class="button col button-round btn-scan"><img style="margin-top: 5px;" class="material-icons" src="img/barcode-scan.png" /></button>
           <!-- <a href="#" class="barcode icon-only"><img class="material-icons" src="img/barcode-scan.png" /> -->
@@ -99,6 +99,11 @@
           //height: app.theme === 'ios' ? 63 : 73,
         });
         
+        if (app.data.kode) {
+          // console.log('code exists!')
+          $$('.btn-search').trigger('click');
+        }
+        
       },
       
       pageInit: function(e, page) {
@@ -123,6 +128,11 @@
         // });
         // dialog.$el.find('input').focus();
 
+        // if (app.data.kode) {
+        //   console.log('code exists!')
+        //   $$('.btn-search').trigger('click');
+        // }
+
 
         $$('.btn-search').on('click', function (e) {
           
@@ -135,6 +145,9 @@
             app.dialog.alert('Input kode item!');
             return false;
           }
+          
+          console.log(kode)
+          app.data.kode = ''; //kosongkan kode
                 
           kode = kode.replace(/\//g, '*');
           
@@ -371,6 +384,7 @@
         });
 
         $$('.search').on('focus', function (e) {
+          app.data.kode = '';
           app.router.navigate('/search/', {
                 reloadCurrent: true,
                 ignoreCache: true,

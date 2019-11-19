@@ -62,6 +62,10 @@ img.responsive.profile, img.responsive.profile2 {
   
 }
 
+.col-55.tablet-55 {
+  text-align: left;
+}
+
 /* Left Panel right border when it is visible by breakpoint */
 .panel-left.panel-visible-by-breakpoint:before {
   position: absolute;
