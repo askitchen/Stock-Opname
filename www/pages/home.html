@@ -99,10 +99,10 @@
           //height: app.theme === 'ios' ? 63 : 73,
         });
         
-        if (app.data.kode) {
-          // console.log('code exists!')
-          $$('.btn-search').trigger('click');
-        }
+        // if (app.data.kode) {
+        //   console.log('code exists!')
+        //   $$('.btn-search').trigger('click');
+        // }
         
       },
       
@@ -128,10 +128,138 @@
         // });
         // dialog.$el.find('input').focus();
 
-        // if (app.data.kode) {
-        //   console.log('code exists!')
-        //   $$('.btn-search').trigger('click');
-        // }
+        if (app.data.kode) {
+          
+          console.log('code exists!')
+          
+          var whouse = app.data.whouse;
+          var lokasi = app.data.lokasi;
+          
+          var kode = app.data.kode;
+
+          app.data.kode = ''; //kosongkan kode
+                
+          // kode = kode.replace(/\//g, '*');
+          
+          app.preloader.show();
+
+          var url_stock = app.data.endpoint + 'stock-opname/';
+                
+          if (whouse == '01') {
+              url_stock += kode+'/'+whouse+'/'+lokasi;
+          } else {
+              url_stock += kode+'/'+whouse;
+          }
+
+          app.request.getJSON( url_stock, function(data) {
+            
+            app.preloader.hide();
+            
+            if (data.status) {
+                            
+              if (data.userid) {
+                                
+                app.dialog.confirm("Anda ingin mengupdate data?", function() {
+                    
+                  app.dialog.prompt("Masukkan jumlah barang", function(qty) {
+                  
+                    var frmData = {};
+
+                    frmData.whouse = whouse;
+                    frmData.lokasi = lokasi;
+                    frmData.kode   = kode;
+                    frmData.qty    = qty;
+            
+                    app.request.post(app.data.endpoint + 'stock-opname/update', frmData, function(res) {
+                      
+                      // reload page
+                      var url = app.data.endpoint + 'stock_opname/pending/' + app.data.whouse;
+          
+                      if (app.data.whouse == '01')
+                        url += '/' + app.data.lokasi;
+
+                      app.request.getJSON( url, function (res) {
+
+                        items = res.data;
+                        app.preloader.hide();
+
+                        app.router.navigate('/', {
+                          reloadCurrent: true,
+                          ignoreCache: true,
+                        });
+                      });
+                    });
+                  })
+
+                }, function() {
+                    $$('.search').val('');
+                    $$('.search').focus();
+                    return false;
+                });
+
+              } else {
+
+                // console.log(data)
+                
+                var strHTML = '<div class="row no-gap display"><div class="col-50 title">'+data.name+'</div><div class="col-30 picture">';
+                  
+                if (data.image) {
+                  
+                  if (data.image.substring(0,4) == 'http' || data.image.substring(0,4) == 'data') {
+                    strHTML += '<img class="img-product" src="'+data.image+'" /></div></div>';
+                  } else {
+                    strHTML += '<img class="img-product" src="https://apgroup.id'+data.image+'" /></div>';
+                  }
+                } else {
+                  strHTML += '<img class="img-product" src="https://askitchen.com/images/noimage2.png" /></div>';
+                }
+
+                strHTML += '<div class="col-20"><button class="button col button-round btn-reset" style="margin-top: 15px;">X</button></div>';
+
+                $$('.item-info').html(strHTML);
+                
+              
+                $$('.btn-reset').on('click', function (e) {
+          
+                  var kode = $$('.search').val();
+
+                  if (!kode) return false;
+
+                  var formData = {};
+                  
+                  formData.whouse    = app.data.whouse;
+                  formData.lokasi    = app.data.lokasi;
+                  formData.item_code = kode;
+
+                  app.request.post( app.data.endpoint + 'stock-opname/remove', formData, function(res) {
+                    
+                    $$('.item-info').html('');
+                    
+                    $$('.search').prop('readonly', false);
+                    $$('.search').val('');
+                    $$('.search').focus();
+                  });
+                });
+          
+                
+                // note: gunakan fungsi prop untuk versi terbaru
+                $$('.search').prop('readonly', true);
+                $$('.qty').focus();
+              }
+                
+            } else {
+                
+              $$('.search').val('');
+                
+              if (data.message === undefined) {
+                app.dialog.alert('Kode tidak ditemukan.');
+              } else {
+                app.dialog.alert(data.message)
+              }
+              $$('.search').focus();
+            }
+          });
+        }
 
 
         $$('.btn-search').on('click', function (e) {
