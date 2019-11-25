@@ -137,7 +137,9 @@
           
           var kode = app.data.kode;
                 
-          kode = kode.replace(/\//g, '*');
+          kode = kode.replace(/\*/g, ':');
+          kode = kode.replace(/\//g, '~');
+          console.log(kode)
 
           app.data.kode = ''; //kosongkan kode
                 
@@ -279,7 +281,9 @@
           console.log(kode)
           app.data.kode = ''; //kosongkan kode
                 
-          kode = kode.replace(/\//g, '*');
+          kode = kode.replace(/\*/g, ':');
+          kode = kode.replace(/\//g, '~');
+          console.log(kode)
           
           app.preloader.show();
 
