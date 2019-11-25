@@ -136,6 +136,8 @@
           var lokasi = app.data.lokasi;
           
           var kode = app.data.kode;
+                
+          kode = kode.replace(/\//g, '*');
 
           app.data.kode = ''; //kosongkan kode
                 

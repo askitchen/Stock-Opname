@@ -103,6 +103,7 @@
         $$('.list.media-list.virtual-list.virtual-stock').on('click', '.item-link.item-content', function (e) {
           
           var kode = $$(this).find('.kode').val();
+
           app.data.kode = kode;
           
           app.router.navigate('/', {
