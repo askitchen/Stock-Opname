@@ -198,7 +198,7 @@ $$('#my-login-screen [name="whouse"]').on('change', function () {
   
   var wh = $$(this).val();
   
-  if (wh == '02') {
+  if (wh == '02' || wh == '03') {
     $$('li.posisi').css('display', 'none');
   } else {
     $$('li.posisi').css('display', 'block');
