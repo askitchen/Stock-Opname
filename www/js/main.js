@@ -159,6 +159,8 @@ $$('#my-login-screen .login-button').on('click', function () {
         
         var url = app.data.endpoint + 'stock_opname/pending/' + app.data.whouse;
         
+        console.log(app.data.whouse)
+        
         if (app.data.whouse == '01' || app.data.whouse == '03')
           url += '/' + app.data.lokasi;
 

@@ -149,7 +149,7 @@
 
           var url_stock = app.data.endpoint + 'stock-opname/';
                 
-          if (whouse == '01') {
+          if (whouse == '01' || whouse == '03') {
               url_stock += kode+'/'+whouse+'/'+lokasi;
           } else {
               url_stock += kode+'/'+whouse;
@@ -289,7 +289,7 @@
 
           var url_stock = app.data.endpoint + 'stock-opname/';
                 
-          if (whouse == '01') {
+          if (whouse == '01' || whouse == '03') {
               url_stock += kode+'/'+whouse+'/'+lokasi;
           } else {
               url_stock += kode+'/'+whouse;
