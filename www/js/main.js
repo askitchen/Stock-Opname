@@ -200,10 +200,10 @@ $$('#my-login-screen [name="whouse"]').on('change', function () {
   
   var wh = $$(this).val();
   
-  if (wh == '02') {
-    $$('li.posisi').css('display', 'none');
-  } else {
+  if (wh == '01' || wh == '03') {
     $$('li.posisi').css('display', 'block');
+  } else {
+    $$('li.posisi').css('display', 'none');
   }
 });
 
