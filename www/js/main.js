@@ -166,7 +166,7 @@ $$('#my-login-screen .login-button').on('click', function () {
 
         app.request.getJSON( url, function (res) {
 
-          // console.log(res)
+          console.log(res)
 
           items = res.data;
 
