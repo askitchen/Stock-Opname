@@ -120,7 +120,7 @@ $$('#my-login-screen .login-button').on('click', function () {
   var formData = app.form.convertToData('.login-form');
 
   
-  app.request.post('http://www.apgroup.id/api/method/login', formData, function (res) {
+  app.request.post('http://apgroup.id./api/method/login', formData, function (res) {
     
     app.preloader.hide();
     
@@ -166,7 +166,7 @@ $$('#my-login-screen .login-button').on('click', function () {
 
         app.request.getJSON( url, function (res) {
 
-          console.log(res)
+          // console.log(res)
 
           items = res.data;
 
@@ -239,7 +239,7 @@ $$(document).on('backbutton', function (e) {
   if (app.views.main.router.url == '/' || app.views.main.router.url == '/android_asset/www/index.html') {
     
       if (app.data.bLogedIn) {
-        app.request.post('http://www.apgroup.id/api/method/logout', [], function (res) {
+        app.request.post('http://apgroup.id./api/method/logout', [], function (res) {
           navigator.app.exitApp();
         });
       } else
