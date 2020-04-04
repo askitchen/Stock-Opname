@@ -161,7 +161,7 @@ $$('#my-login-screen .login-button').on('click', function () {
         
         console.log(app.data.whouse)
         
-        if (app.data.whouse == '01' || app.data.whouse == '03')
+        if (app.data.whouse == '01' || app.data.whouse == '03' || app.data.whouse == '06')
           url += '/' + app.data.lokasi;
 
         app.request.getJSON( url, function (res) {
@@ -200,7 +200,7 @@ $$('#my-login-screen [name="whouse"]').on('change', function () {
   
   var wh = $$(this).val();
   
-  if (wh == '01' || wh == '03') {
+  if (wh == '01' || wh == '03' || wh == '06') {
     $$('li.posisi').css('display', 'block');
   } else {
     $$('li.posisi').css('display', 'none');
