@@ -25,7 +25,8 @@ var app = new Framework7({
       
       bLogedIn: false,
 
-      endpoint: 'https://askitchen.com/api/v1/',
+      // endpoint: 'https://askitchen.com/api/v1/',
+      endpoint: 'http://asovic.id/api/v1/',
 
     };
   },
